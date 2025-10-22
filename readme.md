@@ -87,7 +87,9 @@
         - Local
 
 ** Folder Structure **
+    - Django Standard Folder Structure
 ** UI/UX Template **
+    - Paper Work
 
 ##############################################################################################################
 
