@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "socialmediaapp-v1"
+version = "1.0"
+description = "A social media app"
+authors = ["Pascal Le Grand <vkrivx41@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
