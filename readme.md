@@ -21,7 +21,7 @@
     Functional
         User
             - A user needs to be able to create an account and login
-            - A user needs to create a content that involves both texts and optional images
+            - A user needs to create a content that involves both texts and an image
             - A user can modify their data and security parameters
             - A user can view their content and other people's
             - A user can delete or update their content and account
