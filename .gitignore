@@ -7,7 +7,7 @@ __pycache__/
 .Python
 build/
 lib/
-explanations/
+EXPLANATIONS/
 
 
 # Unit test / coverage reports

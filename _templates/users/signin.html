@@ -1,8 +1,21 @@
 {% extends 'bases/base_users.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/users/signin.css' %}">
+{% endblock links %}
 
 {% block right_container %}
-    <form action="" method="post">
-        <div><input type="text" name="" id=""></div>
-        <div><input type="text" name="" id=""></div>
-    </form>
+    <div class="signin_container">
+        <div class="header"></div>
+        <div class="form"></div>
+        <div class="links"></div>
+    </div>
+    <!-- <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button_holder">
+            <button type="submit">Signin</button>
+        </div>
+    </form> -->
 {% endblock right_container %}
