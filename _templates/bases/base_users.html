@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% if title %}
+            {{ title }}
+        {% else %}
+            SISO
+        {% endif %}
+    </title>
+</head>
+<body>
+    <div class="page_container">
+        <div class="left_container">
+            <h1>SISO</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est saepe doloremque perspiciatis fugiat obcaecati veritatis optio maiores ab voluptatibus repudiandae!</p>
+        </div>
+        <div class="right_container">
+            {% block right_container %}
+            {% endblock right_container %}
+        </div>
+    </div>
+</body>
+</html>

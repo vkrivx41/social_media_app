@@ -1,4 +1,9 @@
 from django.shortcuts import render, HttpResponse
 
-def about(request) -> HttpResponse:
-    return HttpResponse("<h1>About Page</h1>")
+from app.abstract.Renderer import Renderer
+
+
+class PagesRenderer(Renderer):
+    def about(self, request) -> HttpResponse:
+        return self.render(request, "pages/about.html")
+    

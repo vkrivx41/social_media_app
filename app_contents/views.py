@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect, HttpResponse
 
+from app.abstract.Renderer import Renderer
 
-def home(request) -> HttpResponse:
-    # redirect from / to posts/
-    if request.get_full_path() == "/":
-        return redirect(to="app_contents:home")
+class ContentsRenderer(Renderer):
+    def home(self, request) -> HttpResponse:
+        # redirect from / to posts/
+        if request.get_full_path() == "/":
+            return redirect(to="app_contents:home")
 
-    return HttpResponse("<h1>Home</h1>")
+        return self.render(request, "contents/home.html")
 
-def create(request) -> HttpResponse:
-    return HttpResponse("<h1>Create a Post</h1>")
+    def create(self, request) -> HttpResponse:
+        return self.render(request, "contents/create.html")
 
-def delete(request, id: int) -> HttpResponse:
-    return HttpResponse("<h1>Delete</h1>")
+    def delete(self, request, id: int) -> HttpResponse:
+        return self.render(request, "contents/delete.html")
 
-def update(request, id: int) -> HttpResponse:
-    return HttpResponse("<h1>Update</h1>")
+    def update(self, request, id: int) -> HttpResponse:
+        return self.render(request, "contents/update.html")
