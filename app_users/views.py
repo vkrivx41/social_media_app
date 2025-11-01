@@ -1,12 +1,12 @@
 from django.shortcuts import render, HttpResponse
 
-from app_users.forms import UserLoginForm
+from app_users.forms import UserSigninForm, UserSignupForm, UserUpdateForm, ProfileForm
 
 from app.abstract.Renderer import Renderer
 
 class UsersRenderer(Renderer):
     def signin(self, request) -> HttpResponse:
-        form = UserLoginForm()
+        form = UserSigninForm()
 
         context: dict = {
             'form': form
@@ -14,7 +14,12 @@ class UsersRenderer(Renderer):
         return self.render(request, "users/signin.html", context)
 
     def signup(self, request) -> HttpResponse:
-        context: dict = {}
+        form = UserSignupForm()
+
+        context: dict = {
+            'form': form
+        }
+
         return self.render(request, "users/signup.html", context)
 
     def signout(self, request) -> HttpResponse:
@@ -22,7 +27,13 @@ class UsersRenderer(Renderer):
         return self.render(request, "users/signout.html", context)
 
     def profile(self, request, username: str) -> HttpResponse:
-        context: dict = {}
+        form1 = UserUpdateForm()
+        form2 = ProfileForm()
+
+        context: dict = {
+            'form1': form1,
+            'form2': form2,
+        }
         return self.render(request, "users/user.html", context)
 
     def delete(self, request, username: str) -> HttpResponse:

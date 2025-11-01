@@ -2,20 +2,26 @@
 {% load static %}
 
 {% block links %}
-    <link rel="stylesheet" href="{% static 'css/users/signin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users/forms.css' %}">
 {% endblock links %}
 
 {% block right_container %}
-    <div class="signin_container">
-        <div class="header"></div>
-        <div class="form"></div>
-        <div class="links"></div>
-    </div>
-    <!-- <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="button_holder">
-            <button type="submit">Signin</button>
+    <div class="form_container">
+        <div class="header">
+            SIGN IN
         </div>
-    </form> -->
+        <div class="form">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <div class="button_holder">
+                    <button type="submit">Sign In</button>
+                </div>
+            </form>
+        </div>
+        <div class="links">
+            <a href="{% url 'app_users:signup' %}">Sign up for a new account</a>
+        </div>
+    </div>
+    
 {% endblock right_container %}

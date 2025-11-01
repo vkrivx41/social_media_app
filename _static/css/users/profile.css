@@ -1,0 +1,129 @@
+
+:root{
+    --right_size: 420px;
+    --circle_size: 195px;
+}
+
+body{
+    overflow-y: hidden;
+}
+
+.profile_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: calc(100vh - 75px);
+    gap: 10px;
+}
+
+.profile_container > .left_container{
+    flex-basis: calc(100% - var(--right_size));
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.left_container > .details, .credentials, .links{
+    width: 80%;
+}
+
+.left_container > .details{
+    flex-basis: 150px;
+    margin-top: 100px;
+    position: relative;
+    border-radius: 4px;
+    background: hsl(160, 92%, 32%);
+    color: white;
+}
+
+.left_container > .details > .photo{
+    background: hsl(160, 92%, 26%);;
+    width: var(--circle_size);
+    height: var(--circle_size);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 100%;
+    right: 100%;
+    transform: translate(75%, 65%);
+}
+
+.left_container > .details > .info{
+    height: 100%;
+    margin-left: calc(var(--circle_size) * 0.75); /* half the circle plus the quarter of it */
+    padding: 5px 15px;
+}
+
+.details > .info .username{
+    font-size: 42px;
+    font-weight: 500;
+}
+
+.details > .info .fullnames{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.details > .info .date_joined{
+    font-size: 16px;
+    font-weight: 550;
+}
+
+
+
+
+.left_container > .credentials{
+    margin-top: 20px;
+}
+
+.credentials > .credentail{
+    height: 63px;
+    margin: 5px 0;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: hsl(160, 92%, 32%);
+}
+
+.credentials > .credentail > .title{
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}
+
+.credentials > .credentail > .value{
+    font-size: 17px;
+    color: white;
+}
+
+
+.left_container > .links{
+    flex-basis: 50px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.left_container > .links > a{
+    background: red;
+    color: white;
+    height: 85%;
+    width: 120px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.profile_container > .right_container{
+    background: hsl(160, 92%, 32%);
+    height: 83%;
+    flex-basis: var(--right_size);
+    padding: 30px 0;
+    border-radius: 4px;
+}
