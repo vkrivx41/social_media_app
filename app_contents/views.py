@@ -8,7 +8,12 @@ class ContentsRenderer(Renderer):
         if request.get_full_path() == "/":
             return redirect(to="app_contents:home")
 
-        return self.render(request, "contents/home.html")
+        images: list = ["image1.jpg", "image2.jpg", "image3.png", "image4.jpg", "image5.jpg"]
+
+        context: dict = {
+            'images': images
+        }
+        return self.render(request, "contents/home.html", context)
 
     def create(self, request) -> HttpResponse:
         return self.render(request, "contents/create.html")

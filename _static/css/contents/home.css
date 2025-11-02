@@ -1,0 +1,190 @@
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --page_width: 75%;
+    --left_sidebar: 250px;
+    --right_sidebar: 300px;
+    --content_padding: 10px;
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 100vw;
+    overflow-x: hidden;
+    background: hsl(160, 20%, 90%);;
+}
+
+.home_container{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.home_container > .left_sidebar{
+    flex-basis: var(--left_sidebar);
+    background: hsl(160, 92%, 32%);
+}
+
+.home_container > .feed{
+    flex-basis: calc(100% - var(--left_sidebar) - var(--right_sidebar));
+    flex-grow: 1;
+    /* height: 2000px; */
+}
+
+.feed > .posts{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feed > .posts > .post{
+    width: 100%;
+    background: hsl(0, 0%, 100%);
+    border: 0.075rem solid rgba(0, 0, 0, 0.338);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.post > .header{
+    --photo_size: 52px;
+    --option_size: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    flex-basis: 70px;
+    padding: 0 var(--content_padding);
+}
+
+.post > .header > .photo{
+    width: var(--photo_size);
+    height: var(--photo_size);
+    border-radius: 100%;
+    background: hsl(160, 92%, 26%);
+}
+
+.post > .header > .details{
+    flex-basis: calc(100% - var(--photo_size) - var(--option_size));
+    height: calc(var(--photo_size) - 5px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.header > .details > .names, .header > .details > .date_posted{
+    width: 100%;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: black;
+}
+
+.header > .details > .names{
+    user-select: none;
+    font-size: 16px;
+}
+
+.header > .details > .names > .username{
+    font-size: 19px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.header > .details > .date_posted{
+    font-weight: 500;
+    padding-bottom: 10px
+}
+
+.post > .header > .options{
+    flex-basis: 100px;
+    height: var(--photo_size);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.header > .options > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 19px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    background: hsl(160, 92%, 32%);
+    color: white;
+}
+
+.header > .options > a{
+    background: hsl(160, 92%, 36%);
+}
+
+.post > .description{
+    width: 100%;
+    padding: 5px var(--content_padding);
+    font-size: 18px;
+}
+
+.post > .image{
+    width: 100%;
+    /* padding: 0px var(--content_padding); */
+}
+
+.post > .image > img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.feed > .pagination{
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.feed > .pagination > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.feed > .pagination > div > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    text-decoration: none;
+    background: hsl(160, 92%, 32%);
+    color: white;
+    font-weight: 550;
+    border-radius: 4px;
+}
+
+.feed > .pagination > div > a:hover{
+    background: hsl(160, 92%, 26%);
+}
+
+.home_container > .right_sidebar{
+    flex-basis: var(--right_sidebar);
+    height: 650px;
+}

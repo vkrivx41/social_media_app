@@ -1,0 +1,61 @@
+
+:root{
+    --page_width: 75%;
+    --left_sidebar: 250px;
+    --right_sidebar: 300px;
+    --page_gap: 20px;
+}
+
+aside{
+    width: calc(var(--right_sidebar) - var(--page_gap));
+    height: 100%;
+    position: fixed;
+}
+
+aside > .header{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 500;
+    padding: 6px 0;
+    background: hsl(160, 92%, 22%);
+    color: white;
+    border-radius: 4px;
+}
+
+aside > .menu{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+    /* gap: 5px; */
+}
+
+aside .menu > a{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: hsl(160, 92%, 32%);;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+
+aside > .menu > a:hover{
+    background: hsl(160, 92%, 36%);
+}
+
+aside > .menu > a:first-child{
+    border-radius: 4px 4px 0 0;
+}
+
+aside > .menu > a:last-child{
+    border-radius: 0 0 4px 4px;
+}

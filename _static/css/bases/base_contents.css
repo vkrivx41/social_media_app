@@ -25,10 +25,14 @@ body{
     top: 0;
     z-index: 1000;
     background: hsl(160, 92%, 32%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .page_contents{
    width: var(--page_width);
-   margin: 25px auto;
+   margin: 30px auto;
    /* background: green; */
+   /* height: 5000px; */
 }

@@ -1,0 +1,63 @@
+:root{
+    --page_width: 75%;
+}
+
+
+nav{
+    width: var(--page_width);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+nav > .logo, nav > .menu, nav > .options{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav > .logo{
+    flex-basis: 350px;
+    font-size: 38px;
+    font-weight: 600;
+    color: white;
+    justify-content: flex-start;
+}
+
+nav > .menu{
+    flex: 1 1 100%;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+nav > .menu > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 2px 8px;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+nav > .options{
+    flex-basis: 300px;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+nav > .options > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 2px 8px;
+    background: hsl(160, 92%, 2%);
+    height: 38px;
+    border-radius: 4px;
+    color: white;
+}
