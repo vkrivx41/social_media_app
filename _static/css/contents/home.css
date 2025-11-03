@@ -15,10 +15,10 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100vw;
     overflow-x: hidden;
-    background: hsl(160, 20%, 90%);;
+    background: hsl(160, 20%, 90%);
 }
 
-.home_container{
+.contents_container{
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -26,12 +26,12 @@ body{
     gap: 40px;
 }
 
-.home_container > .left_sidebar{
+.contents_container > .left_sidebar{
     flex-basis: var(--left_sidebar);
     background: hsl(160, 92%, 32%);
 }
 
-.home_container > .feed{
+.contents_container > .feed{
     flex-basis: calc(100% - var(--left_sidebar) - var(--right_sidebar));
     flex-grow: 1;
     /* height: 2000px; */
@@ -142,12 +142,11 @@ body{
 
 .post > .image{
     width: 100%;
-    /* padding: 0px var(--content_padding); */
 }
 
 .post > .image > img{
     width: 100%;
-    object-fit: contain;
+    object-fit: fill;
 }
 
 .feed > .pagination{
@@ -184,7 +183,7 @@ body{
     background: hsl(160, 92%, 26%);
 }
 
-.home_container > .right_sidebar{
+.contents_container > .right_sidebar{
     flex-basis: var(--right_sidebar);
     height: 650px;
 }

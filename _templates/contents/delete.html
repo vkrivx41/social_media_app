@@ -1,0 +1,22 @@
+{% extends 'bases/base_contents.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/contents/delete.css' %}">
+{% endblock links %}
+
+{% block page_contents %}
+    <div class="contents_container">
+        <div class="left_sidebar"></div>
+        <div class="feed">
+            <div class="header">Are you sure you want to delete this post?</div>
+            <div class="options">
+                <a href="">Yes</a>
+                <a href="">No</a>
+            </div>
+        </div>
+        <div class="right_sidebar">
+            {% include 'bases/right_sidebar.html' %}
+        </div>
+    </div>
+{% endblock page_contents %}

@@ -1,0 +1,77 @@
+*, *::before, *::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --page_width: 75%;
+    --left_sidebar: 250px;
+    --right_sidebar: 300px;
+    --content_padding: 10px;
+    --image_size: 50px;
+    --top_gap: 10px;
+}
+
+.contents_container > .feed{
+    --bottom_height: 48px;
+    flex-basis: calc(100% - var(--left_sidebar) - var(--right_sidebar));
+    flex-grow: 1;
+    height: 120px;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+    background: hsl(0, 0%, 100%);
+    border: 0.075rem solid rgba(0, 0, 0, 0.338);
+    border-radius: 6px;
+}
+
+.feed > .header{
+    width: 100%;
+    flex-basis: calc(100% - var(--bottom_height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--top_gap);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.feed > .options{
+    --post_width: 100px;
+    width: 100%;
+    flex-basis: var(--bottom_height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.feed > .options > a{
+    padding: 2px 15px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 550;
+    height: 40px;
+    background: hsl(162, 50%, 2%);
+    color: white;
+    margin-top: var(--top_margin);
+}
+
+.feed > .options > a:first-child{
+    background: red;
+}
+
+.feed > .options > a:hover{
+    cursor: pointer;
+    opacity: .95;
+}

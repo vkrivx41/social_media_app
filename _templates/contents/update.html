@@ -1,0 +1,37 @@
+{% extends 'bases/base_contents.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/contents/create.css' %}">
+{% endblock links %}
+
+{% block page_contents %}
+    <div class="contents_container">
+        <div class="left_sidebar"></div>
+        <form class="feed" method="post">
+            {% csrf_token %}
+            <div class="top_container">
+                <div class="image_container">
+                    <div class="image"></div>
+                </div>
+                <div class="description">
+                    <textarea name="" id="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nihil tempora accusantium soluta totam sed adipisci dolor impedit possimus ratione!</textarea>
+                </div>
+            </div>
+            <div class="bottom_container">
+                <div class="image_upload">
+                    <input type="file" name="" id="custom-image-input" hidden>
+                    <label for="custom-image-input" class="custom-upload-button">
+                        📷
+                    </label>
+                </div>
+                <div class="post">
+                    <button type="submit">Edit and Post</button>
+                </div>
+            </div>
+        </form>
+        <div class="right_sidebar">
+            {% include 'bases/right_sidebar.html' %}
+        </div>
+    </div>
+{% endblock page_contents %}
