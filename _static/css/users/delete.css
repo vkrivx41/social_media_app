@@ -43,6 +43,6 @@
     border-radius: 4px;
 }
 
-.options > a:first-child{
+.message_box > .options > a:first-child{
     background: red;
 }
