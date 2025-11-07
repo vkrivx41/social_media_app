@@ -131,6 +131,9 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = BASE_DIR / '_media/'
 MEDIA_URL = '/media/'
 
+LOGIN_URL = 'app_users:signin'
+LOGIN_REDIRECT_URL = 'app_contents:home'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

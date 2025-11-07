@@ -11,6 +11,13 @@
             SIGN IN
         </div>
         <div class="form">
+            {% if messages %}
+                <div class="message">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form }}
