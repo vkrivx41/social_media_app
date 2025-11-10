@@ -8,20 +8,26 @@
 {% block page_contents %}
     <div class="contents_container">
         <div class="left_sidebar"></div>
-        <form class="feed" method="post">
+        <form class="feed" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="top_container">
                 <div class="image_container">
-                    <div class="image"></div>
+                    <div class="image">
+                        <img src="{{ user.profile.image.url }}" alt="">
+                    </div>
                 </div>
                 <div class="description">
-                    <textarea name="" id="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati nihil tempora accusantium soluta totam sed adipisci dolor impedit possimus ratione!</textarea>
+                    {% for field in form1 %}
+                        {{ field }}
+                    {% endfor %}
                 </div>
             </div>
             <div class="bottom_container">
                 <div class="image_upload">
-                    <input type="file" name="" id="custom-image-input" hidden>
-                    <label for="custom-image-input" class="custom-upload-button">
+                    {% for field in form2 %}
+                        {{ field }}
+                    {% endfor %}
+                    <label for="custom-image-input" class="custom_upload_button">
                         📷
                     </label>
                 </div>

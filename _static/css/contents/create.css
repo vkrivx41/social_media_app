@@ -51,9 +51,14 @@
     width: var(--image_size);
     height: var(--image_size);
     border-radius: 100%;
-    background: hsl(162, 50%, 2%);
 }
 
+.feed > .top_container > .image_container > .image > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+}
 
 
 .feed > .top_container > .description{

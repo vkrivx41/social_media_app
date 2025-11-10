@@ -2,6 +2,8 @@ from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
+from pathlib import Path
+
 from app_users.forms import UserSigninForm, UserSignupForm, UserUpdateForm, ProfileForm
 
 from app_users.models import User, Profile
@@ -43,6 +45,9 @@ class UsersRenderer(Renderer):
                 username = form.cleaned_data.get("username")
                 
                 form.save()
+
+                user = User.objects.get(username=username)
+                self.get_or_create_profile(user)
                 messages.success(request, f"Your account has been created. Login in as {username}")
 
                 return redirect("app_users:signin")
@@ -61,7 +66,6 @@ class UsersRenderer(Renderer):
 
     def profile(self, request) -> HttpResponse:
         user: User = request.user
-        self.get_or_create_profile(user)
 
         form1 = UserUpdateForm(prefix="credential", instance=request.user)
         form2 = ProfileForm(prefix="profile", instance=request.user.profile)
@@ -109,6 +113,17 @@ class UsersRenderer(Renderer):
 
     @staticmethod
     def get_or_create_profile(user: User) -> Profile:
-        profile, _ = Profile.objects.get_or_create(user=user)
+        profile, created = Profile.objects.get_or_create(user=user)
+        prefix: str = "images/templates"
+
+        if created:
+            if user.gender == User.Gender.male:
+                profile_url = f"{prefix}/profile_male.png"
+            else:
+                profile_url = f"{prefix}/profile_female.png"
+
+            profile.image = profile_url
+            profile.save()
+
         return profile      
         

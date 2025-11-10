@@ -12,6 +12,6 @@ urlpatterns: list = [
     path("signin/", renderer.signin, name="signin"),
     path("signout/", renderer.signout, name="signout"),
     path("signup/", renderer.signup, name="signup"),
-    path("user/", login_required(renderer.profile), name="profile"),
+    path("profile/", login_required(renderer.profile), name="profile"),
     path("delete/<str:username>", login_required(renderer.delete), name="delete"),
 ]

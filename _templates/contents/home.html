@@ -6,27 +6,31 @@
         <div class="left_sidebar"></div>
         <div class="feed">
             <div class="posts">
-                {% for image in images %}
+                {% for post in posts %}
                     <div class="post">
                         <div class="header">
-                            <div class="photo"></div>
+                            <div class="photo">
+                                <img src="{{ post.user.profile.image.url }}" alt="">
+                            </div>
                             <div class="details">
                                 <div class="names">
-                                    <div class="username">ScorpusMn</div>
-                                    <div class="fullnames">Scorpus Mugnes</div>
+                                    <div class="username">{{ post.user.username }}</div>
+                                    <div class="fullnames">{{ post.user.first_name }} {{ post.user.last_name }}</div>
                                 </div>
-                                <div class="date_posted">8 hours ago</div>
+                                <div class="date_posted">{{ post.posted_at }}</div>
                             </div>
                             <div class="options">
-                                <a href="">D</a>
-                                <a href="">E</a>
+                                {% if user == post.user %}
+                                    <a href="{% url 'app_contents:delete' post.id %}">❌</a>
+                                    <a href="{% url 'app_contents:update' post.id %}">✏️</a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia delectus quaerat autem cupiditate amet culpa odio! Ut ipsum, eligendi reprehenderit aperiam culpa aliquid, quos expedita voluptatum sit fugit praesentium facere.
+                            {{ post.description }}
                         </div>
                         <div class="image">
-                            <img src="/media/images/posts/{{ image }}" alt="No Image">
+                            <img src="{{ post.image.url }}" alt="No Image">
                         </div>
                     </div>
                 {% endfor %}
