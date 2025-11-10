@@ -8,10 +8,10 @@
 {% block page_contents %}
     <div class="delete_container">
         <div class="message_box">
-            <div class="header">Lorem ipsum dolor sit amet.</div>
+            <div class="header">{{ user.username }}, are you sure you want to delete your account.</div>
             <div class="options">
-                <a href="">Yes</a>
-                <a href="">No</a>
+                <a href="{% url 'app_users:delete' user.username %}?perform=1">Yes</a>
+                <a href="{% url 'app_users:profile' %}">No</a>
             </div>
         </div>
     </div>

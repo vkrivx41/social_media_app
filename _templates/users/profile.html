@@ -1,0 +1,81 @@
+{% extends 'bases/base_contents.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/users/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/users/profile.css' %}">
+{% endblock links %}
+
+{% block page_contents %}
+    <div class="profile_container">
+        <div class="left_container">
+            <div class="details">
+                <div class="photo">
+                    {% if user.profile.image %}
+                        <img src="{{ user.profile.image.url }}" alt="">
+                    {% else %}
+                        {% if user.gender == "male"%}
+                            <img src="/media/images/templates/profile_male.jpeg" alt="">
+                        {% else %}
+                            <img src="/media/images/templates/profile_female.png" alt="">
+                        {% endif %}
+                    {% endif %}
+                </div>
+                <div class="info">
+                    <div class="username">{{ user.username }}</div>
+                    <div class="fullnames">
+                        {% if user.first_name %}
+                            {{ user.first_name }}
+                        {% else %}
+                            [Firstname]
+                        {% endif %}
+                        {% if user.last_name %}
+                            {{ user.last_name }}
+                        {% else %}
+                            [Lastname]
+                        {% endif %}
+                    </div>
+                    <div class="date_joined">Joined {{ user.date_joined }}</div>
+                </div>
+            </div>
+            <div class="credentials">
+                <div class="credentail">
+                    <div class="title">Email</div>
+                    <div class="value">{{ user.email }}</div>
+                </div>
+                <div class="credentail">
+                    <div class="title">Gender</div>
+                    <div class="value">{{ user.gender.title }}</div>
+                </div>
+                <div class="credentail">
+                    <div class="title">Last Login</div>
+                    <div class="value">{{ user.last_login }}</div>
+                </div>
+            </div>
+            <div class="links">
+                <a href="{% url 'app_users:delete' user.username %}">Delete Account</a>
+            </div>
+        </div>
+        <div class="right_container">
+            <div class="form_container">
+                <div class="header">
+                    UPDATE YOUR INFO
+                </div>
+                <div class="form">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form1 }}
+                        {% for field in form2 %}
+                            <label class="custom_upload_button" for="{{ field.auto_id }}">📷 Upload Picture</label>
+                            {{ field }}
+                        {% endfor %}
+                        <div class="button_holder">
+                            <button type="submit">Update Info</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+{% endblock page_contents %}

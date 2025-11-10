@@ -17,3 +17,4 @@ class Renderer(ABC):
             context=context
         )
     
+    # def get_user_info(self, user_id: int):

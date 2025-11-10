@@ -1,8 +1,8 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
 
-
 from .views import *
+
 
 app_name: str = "app_users"
 
@@ -12,7 +12,6 @@ urlpatterns: list = [
     path("signin/", renderer.signin, name="signin"),
     path("signout/", renderer.signout, name="signout"),
     path("signup/", renderer.signup, name="signup"),
-    path("user/<str:username>", login_required(renderer.profile), name="profile"),
+    path("user/", login_required(renderer.profile), name="profile"),
     path("delete/<str:username>", login_required(renderer.delete), name="delete"),
-    path("update/<str:username>", login_required(renderer.update), name="update"),
 ]

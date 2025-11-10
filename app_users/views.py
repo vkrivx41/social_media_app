@@ -1,9 +1,10 @@
-from django.shortcuts import redirect, reverse, HttpResponse
+from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
 
 from app_users.forms import UserSigninForm, UserSignupForm, UserUpdateForm, ProfileForm
+
+from app_users.models import User, Profile
 
 from app.abstract.Renderer import Renderer
 from app.enums.HttpMethods import HttpMethod
@@ -58,20 +59,56 @@ class UsersRenderer(Renderer):
 
         return redirect("app_users:signin")
 
-    def profile(self, request, username: str) -> HttpResponse:
-        form1 = UserUpdateForm()
-        form2 = ProfileForm()
+    def profile(self, request) -> HttpResponse:
+        user: User = request.user
+        self.get_or_create_profile(user)
 
-        context: dict = {
+        form1 = UserUpdateForm(prefix="credential", instance=request.user)
+        form2 = ProfileForm(prefix="profile", instance=request.user.profile)
+
+        if request.method == HttpMethod.POST:
+            form1 = UserUpdateForm(request.POST, prefix="credential", instance=request.user)
+            form2 = ProfileForm(request.POST, request.FILES, prefix="profile", instance=request.user.profile)
+
+            if form1.is_valid() and form2.is_valid():
+                form1.save()
+                form2.save()
+                messages.success(request, "Profile updated successfully!")
+                return redirect("app_users:profile")
+            else:
+                messages.error(request, "Please correct the errors below.")
+
+        context = {
             'form1': form1,
             'form2': form2,
+            'user': user
         }
-        return self.render(request, "users/user.html", context)
+        return self.render(request, "users/profile.html", context)
 
     def delete(self, request, username: str) -> HttpResponse:
-        context: dict = {}
+        perform_confirmation = request.GET.get("perform") == "1"
+        user = request.user
+        
+        previous_page_url: str = request.META.get("HTTP_REFERER")
+        current_page_url: str = request.path
+
+        if previous_page_url is None:
+            return redirect("app_users:profile")
+        
+        if perform_confirmation:
+            request.user.delete()
+            return redirect("app_contents:home")
+
+        context: dict = {
+            'user': user,
+            'previous': previous_page_url,
+            'current_url': current_page_url,
+        }
+
         return self.render(request, "users/delete.html", context)
 
-    def update(self, request, username: str) -> HttpResponse:
-        context: dict = {}
-        return self.render(request, "users/update.html", context)
+    @staticmethod
+    def get_or_create_profile(user: User) -> Profile:
+        profile, _ = Profile.objects.get_or_create(user=user)
+        return profile      
+        

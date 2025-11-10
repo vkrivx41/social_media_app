@@ -1,6 +1,7 @@
 
-from app_users.models import User
+from app_users.models import User, Profile
 
 
 def run():
-    print(User.objects.all())
+    user = User.objects.first()
+    print(Profile.objects.get_or_create(user=user))

@@ -2,6 +2,7 @@
 :root{
     --right_size: 420px;
     --circle_size: 195px;
+    --input_height: 40px;
 }
 
 body{
@@ -40,7 +41,6 @@ body{
 }
 
 .left_container > .details > .photo{
-    background: hsl(160, 92%, 26%);;
     width: var(--circle_size);
     height: var(--circle_size);
     border-radius: 50%;
@@ -50,6 +50,13 @@ body{
     transform: translate(75%, 65%);
 }
 
+.left_container > .details > .photo > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
 .left_container > .details > .info{
     height: 100%;
     margin-left: calc(var(--circle_size) * 0.75); /* half the circle plus the quarter of it */
@@ -57,18 +64,18 @@ body{
 }
 
 .details > .info .username{
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 500;
 }
 
 .details > .info .fullnames{
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 24px;
+    font-weight: 550;
 }
 
 .details > .info .date_joined{
     font-size: 16px;
-    font-weight: 550;
+    font-weight: 500;
 }
 
 
@@ -126,4 +133,29 @@ body{
     flex-basis: var(--right_size);
     padding: 30px 0;
     border-radius: 4px;
+}
+
+.right_container > .form_container > .form > form{
+    width: 80%;
+}
+.right_container > .form_container > .form > form > .custom_upload_button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    background-color: white;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+    width: 200px;
+    height: var(--input_height);
+    margin: 10px 0;
+}
+
+.right_container > .form_container > .form > form > .custom_upload_button:hover {
+    background-color: hsl(0, 0%, 95%);
+    cursor: pointer;
 }

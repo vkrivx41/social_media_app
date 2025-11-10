@@ -95,7 +95,7 @@
     margin-left: calc(var(--image_size) + var(--top_gap));
 }
 
-.bottom_container > .image_upload > .custom-upload-button {
+.bottom_container > .image_upload > .custom_upload_button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,7 +109,7 @@
     text-align: center;
 }
 
-.bottom_container > .image_upload > .custom-upload-button:hover {
+.bottom_container > .image_upload > .custom_upload_button-button:hover {
     background-color: hsl(162, 50%, 36%);
     cursor: pointer;
 }

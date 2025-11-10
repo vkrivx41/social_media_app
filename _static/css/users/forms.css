@@ -5,6 +5,7 @@
     --top_margin: 10px;
     --form_padding: 10px;
     --django_form_div_width: 85%;
+    --input_height: 40px;
 }
 
 .page_container > .right_container > .form_container{
@@ -91,22 +92,21 @@
     display: none;
 }
 
-.form_container > .form > form input, button, select{
+.form_container > .form > form input, button, select, .custom_upload_button{
     padding: 2px var(--form_padding);
     font-size: 15px;
     border-radius: 4px;
     border: none;
     outline: none;
-    height: 40px;
+    height: var(--input_height);
+    width: 100%;
 }
 .form_container > .form > form select{
     margin: var(--top_margin) 0;
-    width: inherit;
 }
 
 .form_container > .form > form input{
     margin: var(--top_margin) 0;
-    width: inherit;
 }
 
 .form_container > .form > form button{

@@ -9,7 +9,7 @@
     </div>
     <div class="options">
         {% if user.is_authenticated %}
-            <a href="{% url 'app_users:profile' user.username %}">Profile</a>
+            <a href="{% url 'app_users:profile' %}">Profile</a>
             <a href="{% url 'app_users:signout' %}">Sign Out</a>
         {% else %}
             <a href="{% url 'app_users:signin' %}">Sign In</a>
