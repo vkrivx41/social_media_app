@@ -14,8 +14,8 @@
                             </div>
                             <div class="details">
                                 <div class="names">
-                                    <div class="username">{{ post.user.username }}</div>
-                                    <div class="fullnames">{{ post.user.first_name }} {{ post.user.last_name }}</div>
+                                    <div class="username">@{{ post.user.username }}</div>
+                                    <div class="fullnames">{{ post.user.first_name.title }} {{ post.user.last_name.title }}</div>
                                 </div>
                                 <div class="date_posted">{{ post.posted_at }}</div>
                             </div>
@@ -36,17 +36,21 @@
                 {% endfor %}
             </div>
             <div class="pagination">
-                <div class="prev_and_first">
-                    <a href=""><<</a>
-                    <a href=""><</a>
-                </div>
+                {% if posts.has_previous %}
+                    <div class="prev_and_first">
+                        <a href="{% url 'app_contents:home' %}?page=1"><<</a>
+                        <a href="{% url 'app_contents:home' %}?page={{ posts.previous_page_number }}"><</a>
+                    </div>
+                {% endif %}
                 <div class="current">
-                    <a href="">5</a>
+                    <a href="#">{{ posts.number }}</a>
                 </div>
-                <div class="next_and_last">
-                    <a href="">></a>
-                    <a href="">>>   </a>
-                </div>
+                {% if posts.has_next %}
+                    <div class="next_and_last">
+                        <a href="{% url 'app_contents:home' %}?page={{ posts.next_page_number }}">></a>
+                        <a href="{% url 'app_contents:home' %}?page={{ posts.paginator.num_pages }}">>></a>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="right_sidebar">

@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, HttpResponse
+from django.core.paginator import Paginator
 
 from app_contents.models import Post
 
@@ -14,11 +15,15 @@ class ContentsRenderer(Renderer):
         if request.get_full_path() == "/":
             return redirect(to="app_contents:home")
 
+        page_number: int = int(request.GET.get("page", "1"))
         posts = Post.objects.all()
+
+        paginator = Paginator(posts, per_page=20)
+        paginator_page = paginator.get_page(page_number)
 
         context: dict = {
             'user': request.user,
-            'posts': posts,
+            'posts': paginator_page,
         }
         
         return self.render(request, "contents/home.html", context)
