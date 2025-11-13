@@ -37,6 +37,28 @@ class UserSignupForm(forms.ModelForm):
             "password": "",
         }
 
+    def clean_username(self):
+        """
+        Validate the username to be 3 chars or more
+        """
+        username = self.cleaned_data.get("username")
+
+        if len(username) < 3:
+            raise forms.ValidationError(message="Username needs to be 3 characters or more")
+        
+        return username
+    
+    def clean_password(self):
+        """
+        Validate the password's length to be 6 chars or more
+        """
+        password: str = self.cleaned_data.get("password")
+
+        if len(password) < 6:
+            raise forms.ValidationError(message="Password must be 6 characters or more")
+        
+        return password
+
     def save(self, commit=True):
         """
         Modify to hash the password before committing the changes to the DB
@@ -72,6 +94,24 @@ class UserUpdateForm(forms.ModelForm):
             "gender": "",
         }
 
+    def clean_first_name(self):
+        """ Validate the first_name to be 2 chars or more """
+        first_name = self.cleaned_data.get("first_name")
+
+        if len(first_name) < 2:
+            raise forms.ValidationError(message="First name must be 2 or more character")
+        
+        return first_name
+    
+    def clean_last_name(self):
+        """ Validate the last_name to be 2 chars or more """
+        last_name = self.cleaned_data.get("last_name")
+
+        if len(last_name) < 2:
+            raise forms.ValidationError(message="Last name must be 2 or more character")
+        
+        return last_name
+    
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile

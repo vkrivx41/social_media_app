@@ -23,17 +23,6 @@ class User(AbstractUser):
 
     def __str__(self):
         return super().__str__()
-    
-    def clean(self):
-        """
-        Modify to validate the password length
-        """
-        if len(self.password) < 6:
-            raise ValidationError({
-                'password': "Password must be 6 characters or more"
-            })
-        
-        super().clean()
 
     def delete(self):
         """

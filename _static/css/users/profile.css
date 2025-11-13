@@ -135,10 +135,19 @@ body{
     border-radius: 4px;
 }
 
-.right_container > .form_container > .form > form{
+.form_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form_container > .form > form{
     width: 80%;
 }
-.right_container > .form_container > .form > form > .custom_upload_button {
+
+.form_container > .form > form > .custom_upload_button {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -155,7 +164,17 @@ body{
     margin: 10px 0;
 }
 
-.right_container > .form_container > .form > form > .custom_upload_button:hover {
+.form_container > .form > form > .custom_upload_button:hover {
     background-color: hsl(0, 0%, 95%);
     cursor: pointer;
+}
+
+
+.form_container > .message{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    font-size: 20px;
+    color: white;
 }

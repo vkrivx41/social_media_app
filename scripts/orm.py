@@ -5,10 +5,11 @@ from app_contents.models import Post
 
 
 def run():
-    users = User.objects.all()
-    posts = Post.objects.all().order_by("-posted_at")
+    pass
+    # users = User.objects.all()
+    # posts = Post.objects.all().order_by("-posted_at")
 
-    posts.update(posted_at=timezone.now())
+    # posts.update(posted_at=timezone.now())
     # for user in users:
     #     profile, _ = Profile.objects.get_or_create(user=user)
         

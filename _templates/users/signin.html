@@ -14,7 +14,9 @@
             {% if messages %}
                 <div class="message">
                     {% for message in messages %}
-                        {{ message }}
+                        {% if forloop.last %}
+                            {{ message }}
+                        {% endif %}
                     {% endfor %}
                 </div>
             {% endif %}

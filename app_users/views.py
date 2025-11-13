@@ -1,15 +1,13 @@
-from django.shortcuts import redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import redirect, HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
-from pathlib import Path
-
 from app_users.forms import UserSigninForm, UserSignupForm, UserUpdateForm, ProfileForm
-
 from app_users.models import User, Profile
 
 from app.abstract.Renderer import Renderer
 from app.enums.HttpMethods import HttpMethod
+from app.helpers.contrib.messages import set_single_message
 
 class UsersRenderer(Renderer):
     def signin(self, request) -> HttpResponse:
@@ -48,7 +46,7 @@ class UsersRenderer(Renderer):
 
                 user = User.objects.get(username=username)
                 self.get_or_create_profile(user)
-                messages.success(request, f"Your account has been created. Login in as {username}")
+                set_single_message(request, messages.SUCCESS, f"Your account has been created. Login in as {username}")
 
                 return redirect("app_users:signin")
             
@@ -77,10 +75,12 @@ class UsersRenderer(Renderer):
             if form1.is_valid() and form2.is_valid():
                 form1.save()
                 form2.save()
-                messages.success(request, "Profile updated successfully!")
+                
+                set_single_message(request, messages.SUCCESS, "Profile updated successfully!")
+
                 return redirect("app_users:profile")
             else:
-                messages.error(request, "Please correct the errors below.")
+                set_single_message(request, messages.ERROR, "Please correct the errors and try.")
 
         context = {
             'form1': form1,
