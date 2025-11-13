@@ -21,14 +21,14 @@ nav > .logo, nav > .menu, nav > .options{
 
 nav > .logo{
     flex-basis: 350px;
-    font-size: 38px;
-    font-weight: 600;
     justify-content: flex-start;
 }
 
 nav > .logo > a{
+    font-size: 38px;
     text-decoration: none;
-    color: white;
+    color: hsl(160, 92%, 35%);
+    font-weight: 700;
 }
 
 nav > .menu{
@@ -45,7 +45,7 @@ nav > .menu > a{
     padding: 2px 8px;
     font-size: 20px;
     font-weight: 500;
-    color: white;
+    color: black;
 }
 
 nav > .options{

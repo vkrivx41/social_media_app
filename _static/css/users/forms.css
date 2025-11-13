@@ -1,6 +1,6 @@
 
 :root{
-    --container_width: 80%;
+    --container_width: 330px;
     --general_height: 50px;
     --top_margin: 10px;
     --form_padding: 10px;
@@ -35,6 +35,7 @@
     height: calc(100% - (var(--general_height) * 2));
     align-items: center;
     flex-direction: column;
+    padding: 5px;
 }
 
 .form_container > .form > .message{
@@ -56,18 +57,6 @@
     height: 100%;
 }
 
-.form_container > .form > form > .errorlist{
-    list-style: none;
-    width: 100%;
-    width: var(--django_form_div_width);
-}
-
-.form_container > .form > form > .errorlist > li{
-    color: white;
-    text-align: center;
-}
-
-
 /* django auto-gen div for input management */
 .form_container > .form > form > div{
     width: var(--django_form_div_width);
@@ -75,17 +64,19 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 2px;
 }
 
 .form_container > .form > form > div > .errorlist {
     list-style: none;
     color: white;
-    width: inherit;
+    width: 100%;
+    background: blue;
 }
 
 .form_container > .form > form > div > .errorlist > li{
     width: 100%;
-    padding: 0px 5px;
+    color: cyan;
 }
 
 .form_container > .form > form > div > .helptext{
@@ -99,14 +90,16 @@
     border: none;
     outline: none;
     height: var(--input_height);
-    width: 100%;
 }
+
 .form_container > .form > form select{
     margin: var(--top_margin) 0;
+    width: 100%;
 }
 
 .form_container > .form > form input{
     margin: var(--top_margin) 0;
+    width: 100%;
 }
 
 .form_container > .form > form button{

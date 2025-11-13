@@ -6,6 +6,10 @@
     --page_gap: 20px;
 }
 
+*{
+    box-sizing: content-box;
+}
+
 aside{
     width: calc(var(--right_sidebar) - var(--page_gap));
     height: 100%;
@@ -13,16 +17,17 @@ aside{
 }
 
 aside > .header{
-    height: 50px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 26px;
     font-weight: 500;
     padding: 6px 0;
-    background: hsl(160, 92%, 22%);
-    color: white;
-    border-radius: 4px;
+    background: white;
+    color: black;
+    border-bottom: 0.075rem solid rgba(0, 0, 0, 0.338);
+    border-radius: 6px 6px 0 0;
 }
 
 aside > .menu{
@@ -30,9 +35,8 @@ aside > .menu{
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    margin-top: 10px;
     background: hsl(0, 0%, 100%);
-    border-radius: 6px;
+    /* border-radius: 6px; */
 }
 
 aside .menu > a{
@@ -45,7 +49,7 @@ aside .menu > a{
     padding: 0 20px;
     font-size: 18px;
     color: black;
-    border: 0.075rem solid rgba(0, 0, 0, 0.338);
+    border-bottom: 0.075rem solid rgba(0, 0, 0, 0.338);
 }
 
 
@@ -54,9 +58,9 @@ aside > .menu > a:hover{
 }
 
 aside > .menu > a:first-child{
-    border-radius: 4px 4px 0 0;
+    border-top: none;
 }
 
 aside > .menu > a:last-child{
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 6px 6px;
 }

@@ -24,10 +24,11 @@ body{
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: hsl(160, 92%, 32%);
+    background: white;;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 0.075rem solid rgba(0, 0, 0, 0.338);
 }
 
 .page_contents{

@@ -6,7 +6,7 @@
 
 :root{
     --page_width: 75%;
-    --left_sidebar: 250px;
+    --left_sidebar: 300px;
     --right_sidebar: 300px;
     --content_padding: 10px;
 }
@@ -15,7 +15,7 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 100vw;
     overflow-x: hidden;
-    background: hsl(160, 20%, 90%);
+    background: hsl(160, 20%, 85%);
 }
 
 .contents_container{
@@ -147,7 +147,8 @@ body{
 
 .post > .image > img{
     width: 100%;
-    object-fit: fill;
+    height: 420px;
+    object-fit: cover;
     border-radius: 0 0 6px 6px;
 }
 
