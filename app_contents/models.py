@@ -24,5 +24,5 @@ class Post(models.Model):
         get_latest_by = ["posted_at"]
 
     def __str__(self) -> str:
-        return f"Post: {self.pk} - {self.user}"
+        return f"Post: {self.pk} - {self.user} - {self.posted_at}"
     

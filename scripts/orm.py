@@ -6,7 +6,11 @@ from app_contents.models import Post
 
 def run():
     pass
-    # users = User.objects.all()
+    user = User.objects.get(username="kapulo")
+    # print(user.posted.count())
+
+    # for post in Post.objects.filter(user=user):
+    #     print(post)
     # posts = Post.objects.all().order_by("-posted_at")
 
     # posts.update(posted_at=timezone.now())

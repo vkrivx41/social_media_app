@@ -6,5 +6,5 @@ app_name: str = "app_pages"
 renderer: Renderer = PagesRenderer(app_name)
 
 urlpatterns: list = [
-    path("about/", renderer.about, name="about")
+    # path("about/", renderer.about, name="about")
 ]

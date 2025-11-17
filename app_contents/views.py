@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, HttpResponse
 from django.core.paginator import Paginator
 
+from decouple import config
+
 from app_contents.models import Post
 
 from app_contents.forms import DescriptionForm, PostImageForm
@@ -17,13 +19,15 @@ class ContentsRenderer(Renderer):
 
         page_number: int = int(request.GET.get("page", "1"))
         posts = Post.objects.all()
+        posts_per_page = config("POSTS_PER_PAGE", default=10)
 
-        paginator = Paginator(posts, per_page=20)
+        paginator = Paginator(posts, per_page=posts_per_page)
         paginator_page = paginator.get_page(page_number)
 
         context: dict = {
             'user': request.user,
             'posts': paginator_page,
+            'title': f"Home | {self.title_suffix}"
         }
         
         return self.render(request, "contents/home.html", context)
@@ -56,6 +60,7 @@ class ContentsRenderer(Renderer):
             'user': user,
             'form1': form1,
             'form2': form2,
+            'title': f"Create Post | {self.title_suffix}"
         }
         
         return self.render(request, "contents/create.html", context)
@@ -79,6 +84,7 @@ class ContentsRenderer(Renderer):
         context: dict = {
             'user': post_author,
             'post': post,
+            'title': f"Delete Post: {post.id} | {self.title_suffix}"
         }
 
         return self.render(request, "contents/delete.html", context)
@@ -115,6 +121,7 @@ class ContentsRenderer(Renderer):
             'user': post_author,
             'form1': form1,
             'form2': form2,
+            'title': f"Update Post: {post.id} | {self.title_suffix}"
         }
         
         return self.render(request, "contents/update.html", context)

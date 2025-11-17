@@ -36,8 +36,10 @@ body{
     margin-top: 100px;
     position: relative;
     border-radius: 4px;
-    background: hsl(160, 92%, 32%);
-    color: white;
+    background: hsl(0, 0%, 100%);
+    color: black;
+    border: 0.075rem solid rgba(0, 0, 0, 0.171);
+    border-radius: 6px;
 }
 
 .left_container > .details > .photo{
@@ -55,6 +57,9 @@ body{
     height: 100%;
     border-radius: 100%;
     object-fit: cover;
+    border: 4px solid hsl(160, 0%, 90%);
+    /* box-sizing: content-box; */
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.085);
 }
 
 .left_container > .details > .info{
@@ -89,19 +94,21 @@ body{
     height: 63px;
     margin: 5px 0;
     padding: 6px 10px;
-    border-radius: 4px;
-    background: hsl(160, 92%, 32%);
+    background: hsl(0, 0%, 100%);
+    color: black;
+    border: 0.075rem solid rgba(0, 0, 0, 0.171);
+    border-radius: 6px;
 }
 
 .credentials > .credentail > .title{
     font-size: 18px;
     font-weight: 500;
-    color: white;
+    color: black;
 }
 
 .credentials > .credentail > .value{
     font-size: 17px;
-    color: white;
+    color: black;
 }
 
 
@@ -128,11 +135,14 @@ body{
 }
 
 .profile_container > .right_container{
-    background: hsl(160, 92%, 32%);
     height: 83%;
     flex-basis: var(--right_size);
     padding: 30px 0;
     border-radius: 4px;
+    background: hsl(0, 0%, 100%);
+    color: black;
+    border: 0.075rem solid rgba(0, 0, 0, 0.171);
+    border-radius: 6px;
 }
 
 .form_container{
@@ -145,6 +155,19 @@ body{
 
 .form_container > .form > form{
     width: 80%;
+    color: black
+}
+
+.form_container > .header {
+    color: black
+}
+
+.form_container > .form > form input, select{
+    border: 1px solid rgba(0, 0, 0, 0.492);
+}
+
+.form_container > .form > form button{
+    background: hsl(162, 92%, 32%);
 }
 
 .form_container > .form > form > .custom_upload_button {
@@ -152,8 +175,8 @@ body{
     align-items: center;
     justify-content: flex-start;
     padding: 10px 15px;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     border-radius: 4px;
     cursor: pointer;
     font-size: 18px;
@@ -165,7 +188,7 @@ body{
 }
 
 .form_container > .form > form > .custom_upload_button:hover {
-    background-color: hsl(0, 0%, 95%);
+    background-color: hsl(105, 29%, 13%);
     cursor: pointer;
 }
 
@@ -175,6 +198,6 @@ body{
     align-items: center;
     justify-content: center;
     width: 80%;
-    font-size: 20px;
-    color: white;
+    font-size: 18px;
+    color: black;
 }

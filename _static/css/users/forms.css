@@ -8,6 +8,10 @@
     --input_height: 40px;
 }
 
+body{
+    background: hsl(160, 0%, 90%);
+}
+
 .page_container > .right_container > .form_container{
     width: var(--container_width);
     height: 100%;
@@ -28,7 +32,7 @@
     height: var(--general_height);
     font-size: 26px;
     font-weight: 550;
-    color: white;
+    color: black;
 }
 
 .form_container > .form{
@@ -41,7 +45,7 @@
 .form_container > .form > .message{
     margin-top: 20px;
     padding: 0 var(--form_padding);
-    color: white;
+    color: black;
     width: var(--django_form_div_width);
     font-size: 18px;
     font-weight: 500;
@@ -95,11 +99,13 @@
 .form_container > .form > form select{
     margin: var(--top_margin) 0;
     width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.492);
 }
 
 .form_container > .form > form input{
     margin: var(--top_margin) 0;
     width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.492);
 }
 
 .form_container > .form > form button{
@@ -120,5 +126,5 @@
 
 .form_container > .links > a{
     text-decoration: none;
-    color: white;
+    color: black;
 }

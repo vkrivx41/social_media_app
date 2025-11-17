@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, HttpResponse
+from django.shortcuts import redirect, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
@@ -29,7 +29,8 @@ class UsersRenderer(Renderer):
                 form.add_error(None, "Email or Password is incorrect.")
 
         context: dict = {
-            'form': form
+            'form': form,
+            'title': "User Sign In"
         }
         return self.render(request, "users/signin.html", context)
 
@@ -51,7 +52,8 @@ class UsersRenderer(Renderer):
                 return redirect("app_users:signin")
             
         context: dict = {
-            'form': form
+            'form': form,
+            'title': "User Sign Up"
         }
 
         return self.render(request, "users/signup.html", context)
@@ -85,18 +87,20 @@ class UsersRenderer(Renderer):
         context = {
             'form1': form1,
             'form2': form2,
-            'user': user
+            'user': user,
+            'title': f"{user.first_name} {user.last_name} - @{user.username}"
         }
         return self.render(request, "users/profile.html", context)
 
     def delete(self, request, username: str) -> HttpResponse:
         perform_confirmation = request.GET.get("perform") == "1"
-        user = request.user
+        user = get_object_or_404(User, username=username)
+        request_user = request.user
         
         previous_page_url: str = request.META.get("HTTP_REFERER")
         current_page_url: str = request.path
 
-        if previous_page_url is None:
+        if user != request_user:
             return redirect("app_users:profile")
         
         if perform_confirmation:
@@ -107,6 +111,7 @@ class UsersRenderer(Renderer):
             'user': user,
             'previous': previous_page_url,
             'current_url': current_page_url,
+            'title': f"Delete {user.username}"
         }
 
         return self.render(request, "users/delete.html", context)
